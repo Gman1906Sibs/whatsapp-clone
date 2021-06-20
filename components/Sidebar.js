@@ -41,7 +41,7 @@ function Sidebar() {
         );
 
     return (
-        <div className="h-[100vh] max-w-[350px] no-scrollbar ">
+        <div className="h-[100vh] max-w-[350px] overflow-y-scroll scrollbar-hide ">
             <div className="flex sticky top-0 bg-white z-10 justify-between items-center p-4 h-55 ">
                 <img src={user.photoURL} className="h-10 rounded-full text-gray-300 hover:cursor-pointer transition duration-150 transform hover:scale-110 "
                     // signOut() is a built in firebase function

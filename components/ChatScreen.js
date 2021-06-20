@@ -3,15 +3,15 @@ import { EmojiHappyIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db} from "../firebase";
-import EndOfMessage from "../components/EndOfMessage";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import firebase from "firebase";
 import Message from "../components/Message";
 import getRecipientEmail from "../utils/getRecipientEmail";
 import TimeAgo from "timeago-react";
 
 function ChatScreen({ chat, messages }) {
+    const endOfMessageRef = useRef(null);
     const [user] = useAuthState(auth);
     const [input, setInput] = useState("");
     const router = useRouter();
@@ -43,6 +43,13 @@ function ChatScreen({ chat, messages }) {
         }
     };
 
+    const scrollToBottom = () => {
+        endOfMessageRef.current.scrollIntoView({
+            behaviour: "smooth",
+            block:"start",
+        });
+    }
+
     const sendMessage = (e) => {
         e.preventDefault();
 
@@ -60,6 +67,7 @@ function ChatScreen({ chat, messages }) {
         });
 
         setInput("");
+        scrollToBottom();
     };
 
     const recipient = recipientSnapshot?.docs?.[0]?.data();
@@ -69,13 +77,15 @@ function ChatScreen({ chat, messages }) {
     return (
         <div className="flex-grow h-[100vh]">
             {/* top header bar */}
-            <div className="sticky bg-white z-100 top-0 flex p-[11px] h-[80px] items-center border-b-1 shadow-sm">
+            <div className="sticky bg-white z-50 top-0 flex p-[11px] h-[80px] items-center border-b-1 shadow-sm">
                 {recipient ? (
                     <img src={recipient?.photoURL} 
                         className="h-10 w-10 rounded-full bg-gray-200"
                     />
                 ) : ( 
-                    <UserCircleIcon className="h-10 text-gray-300" />
+                    <div className="flex h-9 w-9 m-1 mr-2 p-1 bg-gray-300 text-white rounded-full text-4xl justify-evenly ">
+                        {recipientEmail[0]}
+                    </div>
                 )}
 
                 <div className="ml-3 flex-grow">
@@ -103,9 +113,9 @@ function ChatScreen({ chat, messages }) {
             </div>
 
             {/* Message container */}
-            <div className="p-5 bg-[#e5ded8] min-h-[90vh] rounded-md">
+            <div className="p-5 bg-[#e5ded8] min-h-[90vh] rounded-md mb-10">
                 {showMessages()}
-                <EndOfMessage className="" />
+                <div className="" ref={endOfMessageRef}/>
             </div>
 
             <div className="flex items-center p-2 sticky bottom-0 bg-white z-100">

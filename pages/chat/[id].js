@@ -18,7 +18,7 @@ function Chat({ chat, messages }) {
 
             <Sidebar className="" />
 
-            <div className="flex flex-grow h-[100vh]  p-0">
+            <div className="flex flex-grow h-[100vh] p-0 overflow-y-scroll scrollbar-hide ">
                 <ChatScreen chat={chat} messages={messages} />
             </div>
         </div>

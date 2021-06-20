@@ -28,7 +28,7 @@ function Chat({ id, users }) {
         >
             {recipient ? (
                 <img src={recipient?.photoUrl}
-                    className="h-12 w-12 rounded-full  mr-2"
+                    className="h-10 w-10 rounded-full  mr-2"
                 />
             ) : (
                 <div className="flex h-9 w-9 m-1 mr-2 p-1 bg-gray-300 text-white rounded-full text-4xl justify-evenly ">
