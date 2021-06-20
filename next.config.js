@@ -1,6 +1,5 @@
 module.exports = {
-  reactStrictMode: true,
   images: {
-        domains: ["assets.stickpng.com"],
+        domains: ["assets.stickpng.com", "lh3.googleusercontent.com"],
     },
 }

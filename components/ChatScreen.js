@@ -9,6 +9,7 @@ import firebase from "firebase";
 import Message from "../components/Message";
 import getRecipientEmail from "../utils/getRecipientEmail";
 import TimeAgo from "timeago-react";
+import Image from "next/image";
 
 function ChatScreen({ chat, messages }) {
     const endOfMessageRef = useRef(null);
@@ -74,13 +75,18 @@ function ChatScreen({ chat, messages }) {
 
     const recipientEmail = getRecipientEmail(chat.users, user);
 
+    console.log(recipient)
+
     return (
         <div className="flex-grow h-[100vh]">
             {/* top header bar */}
             <div className="sticky bg-white z-50 top-0 flex p-[11px] h-[80px] items-center border-b-1 shadow-sm">
                 {recipient ? (
-                    <img src={recipient?.photoURL} 
-                        className="h-10 w-10 rounded-full bg-gray-200"
+                    <Image 
+                        src={recipient?.photoUrl} 
+                        width={60}
+                        height={60}
+                        className=" rounded-full"
                     />
                 ) : ( 
                     <div className="flex h-9 w-9 m-1 mr-2 p-1 bg-gray-300 text-white rounded-full text-4xl justify-evenly ">

@@ -3,6 +3,7 @@ import { auth, db } from '../firebase';
 import getRecipientEmail from '../utils/getRecipientEmail';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 function Chat({ id, users }) {
     
@@ -27,11 +28,11 @@ function Chat({ id, users }) {
             onClick={enterChat}
         >
             {recipient ? (
-                <img src={recipient?.photoUrl}
-                    className="h-10 w-10 rounded-full  mr-2"
+                <Image src={recipient?.photoUrl} width={50} height={50}
+                    className="rounded-full left-0 mr-2"
                 />
             ) : (
-                <div className="flex h-9 w-9 m-1 mr-2 p-1 bg-gray-300 text-white rounded-full text-4xl justify-evenly ">
+                <div className="flex ml-[6px] h-9 w-9 m-1 mr-2 p-1 bg-gray-300 text-white rounded-full text-4xl justify-evenly ">
                     {recipientEmail[0]}
                 </div>
             )}

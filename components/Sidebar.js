@@ -4,7 +4,7 @@ import { auth, db } from '../firebase';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Chat from "./Chat";
-
+import Image from "next/image";
 
 function Sidebar() {
     const [user] = useAuthState(auth);
@@ -43,7 +43,9 @@ function Sidebar() {
     return (
         <div className="h-[100vh] max-w-[350px] overflow-y-scroll scrollbar-hide ">
             <div className="flex sticky top-0 bg-white z-10 justify-between items-center p-4 h-55 ">
-                <img src={user.photoURL} className="h-10 rounded-full text-gray-300 hover:cursor-pointer transition duration-150 transform hover:scale-110 "
+                <Image src={user.photoURL} 
+                width={50} height={50} 
+                className="rounded-full text-gray-300 hover:cursor-pointer transition duration-150 transform hover:scale-110 "
                     // signOut() is a built in firebase function
                     onClick={() => auth.signOut()}
                 />
