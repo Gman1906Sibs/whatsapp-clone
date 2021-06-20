@@ -1,4 +1,4 @@
-function Chat() {
+function EndOfMessage() {
     return (
         <div>
             
@@ -6,4 +6,4 @@ function Chat() {
     )
 }
 
-export default Chat
+export default EndOfMessage

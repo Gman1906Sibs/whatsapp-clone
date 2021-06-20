@@ -41,9 +41,9 @@ function Sidebar() {
         );
 
     return (
-        <div className="">
-            <div className="flex sticky top-0 bg-white z-10 justify-between items-center p-4 h-55 border-b border-gray-50">
-                <UserCircleIcon className="h-10 rounded-full text-gray-300 hover:cursor-pointer transition duration-150 transform hover:scale-110 "
+        <div className="h-[100vh] max-w-[350px] no-scrollbar ">
+            <div className="flex sticky top-0 bg-white z-10 justify-between items-center p-4 h-55 ">
+                <img src={user.photoURL} className="h-10 rounded-full text-gray-300 hover:cursor-pointer transition duration-150 transform hover:scale-110 "
                     // signOut() is a built in firebase function
                     onClick={() => auth.signOut()}
                 />
@@ -59,13 +59,13 @@ function Sidebar() {
             </div>
             
             <div className="pb-5">
-                <form className="flex w-full border border-gray-50 items-center rounded-full p-1">
+                <form className="flex w-full border border-gray-50 items-center rounded-full p-1 mt-0 ">
                     <SearchIcon className="h-5 mr-3 ml-1 text-gray-800"/>
                     <input type="text" placeholder="Search in chats" className="flex flex-grow focus:outline-none"/>
                 </form>
             </div>
 
-            <button className=" p-1 w-full border border-gray-50 border-t-1 border-b-1 focus:outline-none hover:bg-gray-100"
+            <button className=" p-1 w-full border border-gray-50 border-t-1 border-b-1 focus:outline-none hover:bg-gray-100 mb-3 text-sm"
                 onClick={createChat}
             >
                 START A NEW CHAT
